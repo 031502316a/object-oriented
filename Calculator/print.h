@@ -7,5 +7,5 @@ class Print
 {
 	public:
 		
-		void printqueue(queue<string> que);
+		void printqueue(queue<string>que);
 } ;
