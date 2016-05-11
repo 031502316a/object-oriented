@@ -82,6 +82,10 @@ double  Calculation::Calculate(queue<string>que)
 			    }
 		    }
 	    }
+	    else if(temp=="=")   //如果是等号不做处理 
+	    {
+	    	
+		}
 		else                                                                   //如果不是符号数就是数字了，此时还要和mark相加，因为有可能是负数 
 		{
 			number.push(temp);
