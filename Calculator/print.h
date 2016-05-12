@@ -10,7 +10,7 @@ class Print
 {
 	public:
 		
-		void print_format_one(int argc,string getsfile,string putsfile);
+		void print_format_one(string getsfile,string putsfile);
 		void print_format_two(string input);
 		void print_format_three(string input);
 } ;

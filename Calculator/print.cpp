@@ -8,31 +8,33 @@
 #include<fstream>         //新的头文件（用于文件的输入等操作） 
 
 /*定义判断是否输入为文件格式，第五次作业添加的内容*/ 
-void Print::print_format_one(int argc,string getsfile,string putsfile)
+void Print::print_format_one(string getsfile,string putsfile)
 {
 	Scan get;                                                                     //定义scan类 
-	Calculation cal;                                                              //定义calculation类，用于计算结果 
-	string input;                                                                 //定义一个字符串用来存储输入要计算的式子  
-
-    fstream infile;
-    fstream outfile;
+	Calculation cal;                                                              //定义calculation类，用于计算结果                                                         //定义一个字符串用来存储输入要计算的式子  
+    
+	ifstream infile;
+    ofstream outfile;
         
     infile.open(getsfile.c_str(),ios::in); 
     outfile.open(putsfile.c_str(),ios::out);
-        
-	string get_str;
-        
+
+    string input;  
     while(!infile.eof())                                                       //未处理到文件尾 
-    {
-        getline(infile,input,'\n');                                           //读入数据 
+    {       
+		getline(infile,input,'\n');                                           //读入数据 
         get.ToStringQueue(input);   
-        if(get.outputqueue.front()=="ERROR")                                  //看是否输入的式子是有问题的，如果有问题就输出error 
+        queue<string>que;
+        que=get.outputqueue;
+        if(que.front()=="ERROR")                                  //看是否输入的式子是有问题的，如果有问题就输出error 
         {
     	    cout<<"ERROR"<<endl;
 	    }
 	    else
 	    {
-	        outfile<<cal.Calculate(get.outputqueue)<<endl;
+	    	double results;
+	    	results=cal.Calculate(que);
+	        outfile<<results<<endl;
 		} 
     }
     infile.close();                                                          //关闭文件 
